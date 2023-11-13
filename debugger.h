@@ -5,10 +5,10 @@
 
 enum debug_levels
 {
-    silent = 0;
-    quiet  = 1;
-    normal = 2;
-    verbos = 3;
+    silent = 0,
+    quiet  = 1,
+    normal = 2,
+    verbos = 3
 }
 struct _IP_Address_
 {

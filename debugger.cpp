@@ -2,80 +2,81 @@
 #include "debugger.h"
 
 
-int DEBUG::msg(const char *format,...)
+int DEBUGGER::msg(const char *format,...)
 { 
     if(com_debug_EN)
     {
-        debug.printf(format);
+        switch (dPort)
+        {
+        case 1:
+            SerialUSB.print(format);
+            break;
+        case 2:
+            SerialUSB1.print(format);
+            break;
+        case 3:
+            SerialUSB2.print(format);
+            break;
+        case 4:
+            Serial1.print(format);
+            break;
+        case 5:
+            Serial2.print(format);
+            break;
+        case 6:
+            Serial3.print(format);
+            break;
+        case 7:
+            Serial4.print(format);
+            break;
+        case 8:
+            Serial5.print(format);
+            break;
+        case 9:
+            Serial6.print(format);
+            break;
+        case 10:
+            Serial7.print(format);
+            break;
+        case 11:
+            Serial8.print(format);
+            break;
+        }
     }
     return 0;
 }
 
-DEBUG::db_ip_Config(_IP_Config_ ip_config)
+void DEBUGGER::db_ip_Config(_IP_Config_ ip_config)
 {
     ip_debug_EN = true;
 
 }
-DEBUG::db_com_Config(uint8_t port)
+void DEBUGGER::db_com_Config(uint8_t port)
 {
     com_debug_EN = true;
-    switch (port)
-    {
-    case 1:
-        HardwareSerial &debug SerialUSB
-        break;
-    case 2:
-        HardwareSerial &debug SerialUSB1
-        break;
-    case 3:
-        HardwareSerial &debug SerialUSB2
-        break;
-    case 4:
-        HardwareSerial &debug Serial1
-        break;
-    case 5:
-        HardwareSerial &debug Serial2
-        break;
-    case 6:
-        HardwareSerial &debug Serial3
-        break;
-    case 7:
-        HardwareSerial &debug Serial4
-        break;
-    case 8:
-        HardwareSerial &debug Serial5
-        break;
-    case 9:
-        HardwareSerial &debug Serial6
-        break;
-    case 10:
-        HardwareSerial &debug Serial7
-        break;
-    case 11:
-        HardwareSerial &debug Serial8
-        break;
-    
-    default:
-        com_debug_EN = false;
-        break;
-    }
+    dPort = port;
 }
 
-DEBUG::DEBUG(int port)
+void DEBUGGER::setPort(uint8_t port)
 {
     db_com_Config(port);
 }
 
-DEBUG::DEBUG(_IP_Config_ ip_config)
+DEBUGGER::DEBUGGER()
+{
+
+}
+/*
+DEBUGGER::DEBUGGER(_IP_Config_ ip_config)
 {
     db_ip_Config(ip_config);
 }
-DEBUG::DEBUG(int port, _IP_Config_ ip_config)
+DEBUGGER::DEBUGGER(int port, _IP_Config_ ip_config)
 {
     db_com_Config(port);
     db_ip_Config(ip_config);
-}
-DEBUG::~DEBUG()
+}*/
+DEBUGGER::~DEBUGGER()
 {
     
 }

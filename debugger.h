@@ -9,7 +9,8 @@ enum debug_levels
     quiet  = 1,
     normal = 2,
     verbos = 3
-}
+};
+
 struct _IP_Address_
 {
     uint8_t oct1;
@@ -28,21 +29,22 @@ struct _IP_Config_
 };
 
 
-class DEBUG
+class DEBUGGER
 {
 private:
-    void debug;
+    uint8_t dPort;
     bool ip_debug_EN = false;
     bool com_debug_EN = false;
     void db_ip_Config(_IP_Config_ ip_config);
     void db_com_Config(uint8_t port);
 public:
     int msg(const char *format,...);
-    DEBUG(uint8_T port);
-    DEBUG(_IP_Config_ ip_config);
-    DEBUG(int port, _IP_Config_ ip_config);
+    void setPort(uint8_t port);
+    DEBUGGER();
+    //DEBUGGER(_IP_Config_ ip_config);
+    //DEBUGGER(int port, _IP_Config_ ip_config);
 
-    ~DEBUG();
+    ~DEBUGGER();
 };
 
 

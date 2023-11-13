@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 
-typedef debug_levels
+enum debug_levels
 {
     silent = 0;
     quiet  = 1;
@@ -31,10 +31,11 @@ struct _IP_Config_
 class DEBUG
 {
 private:
+    void debug;
     bool ip_debug_EN = false;
     bool com_debug_EN = false;
     void db_ip_Config(_IP_Config_ ip_config);
-    void db_com_Config(uint8_t port)
+    void db_com_Config(uint8_t port);
 public:
     int msg(const char *format,...);
     DEBUG(uint8_T port);

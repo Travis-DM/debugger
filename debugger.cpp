@@ -2,13 +2,7 @@
 #include "debugger.h"
 
 
-int msg(uint8_t level, const char *format,...)
-{
-    if(level <= dblevel)
-    {
-        msg(format);
-    }
-}
+
 int DEBUGGER::msg(const char *format,...)
 { 
     if(com_debug_EN)
@@ -52,7 +46,13 @@ int DEBUGGER::msg(const char *format,...)
     }
     return 0;
 }
-
+int DEBUGGER::msg(uint8_t level, const char *format,...)
+{
+    if(level <= dbLevel)
+    {
+        msg(format);
+    }
+}
 void DEBUGGER::db_ip_Config(_IP_Config_ ip_config)
 {
     ip_debug_EN = true;

@@ -2,6 +2,13 @@
 #include "debugger.h"
 
 
+int msg(uint8_t level, const char *format,...)
+{
+    if(level <= dblevel)
+    {
+        msg(format);
+    }
+}
 int DEBUGGER::msg(const char *format,...)
 { 
     if(com_debug_EN)

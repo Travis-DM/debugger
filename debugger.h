@@ -32,6 +32,7 @@ struct _IP_Config_
 class DEBUGGER
 {
 private:
+    uint8_t dbLevel = 3;
     uint8_t dPort;
     bool ip_debug_EN = false;
     bool com_debug_EN = false;
@@ -39,6 +40,7 @@ private:
     void db_com_Config(uint8_t port);
 public:
     int msg(const char *format,...);
+    int msg(uint8_t level, const char *format,...);
     void setPort(uint8_t port);
     DEBUGGER();
     //DEBUGGER(_IP_Config_ ip_config);

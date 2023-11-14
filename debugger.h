@@ -49,6 +49,6 @@ public:
     ~DEBUGGER();
 };
 
-
+extern DEBUGGER debugger; 
 
 #endif
